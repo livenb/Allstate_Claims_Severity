@@ -22,8 +22,8 @@ def read_test(filename):
 
 def build_random_forest(X, y, X_test):
     rfr = RandomForestRegressor(n_estimators=2000, criterion='mse',
-                                max_depth=22, max_features='sqrt',
-                                min_samples_split=26, min_samples_leaf=6,
+                                max_depth=33, max_features='sqrt',
+                                min_samples_split=16, min_samples_leaf=2,
                                 oob_score=True, verbose=1,
                                 n_jobs=-1)
     bagging = BaggingRegressor(rfr, n_estimators=10, verbose=1)

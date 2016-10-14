@@ -768,3 +768,409 @@ parameters: {'max_features': 'log2', 'min_samples_split': 38, 'max_depth': 6, 'm
 train score:1472.39729636	test score:1477.00190745	rank:80
 
 ------------------------------
+
+******************************
+2016/10/14 - 16:02:45
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 8, 'max_depth': 32, 'min_samples_leaf': 1}
+
+train score:767.916971961	test score:1242.86163688	rank:1
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 16, 'max_depth': 33, 'min_samples_leaf': 2}
+
+train score:947.595679557	test score:1243.35563684	rank:2
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 15, 'max_depth': 28, 'min_samples_leaf': 3}
+
+train score:978.84129244	test score:1243.42815352	rank:3
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 6, 'max_depth': 25, 'min_samples_leaf': 4}
+
+train score:956.305474768	test score:1243.85893577	rank:4
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 3, 'max_depth': 30, 'min_samples_leaf': 5}
+
+train score:976.1465872	test score:1244.54208463	rank:5
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 21, 'max_depth': 29, 'min_samples_leaf': 2}
+
+train score:1002.26581799	test score:1245.0975938	rank:6
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 7, 'max_depth': 29, 'min_samples_leaf': 6}
+
+train score:1016.25015712	test score:1246.57090679	rank:7
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 11, 'max_depth': 32, 'min_samples_leaf': 6}
+
+train score:1011.11042281	test score:1247.0860349	rank:8
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 27, 'max_depth': 25, 'min_samples_leaf': 2}
+
+train score:1056.5486923	test score:1247.8499058	rank:9
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 22, 'max_depth': 30, 'min_samples_leaf': 5}
+
+train score:1054.03162749	test score:1247.94562746	rank:10
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 17, 'max_depth': 22, 'min_samples_leaf': 1}
+
+train score:1011.5691515	test score:1248.117913	rank:11
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 32, 'max_depth': 33, 'min_samples_leaf': 1}
+
+train score:1035.40133963	test score:1248.2616102	rank:12
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 24, 'max_depth': 31, 'min_samples_leaf': 5}
+
+train score:1062.09069762	test score:1248.75373386	rank:13
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 15, 'max_depth': 21, 'min_samples_leaf': 2}
+
+train score:1029.29312477	test score:1248.75486285	rank:14
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 19, 'max_depth': 23, 'min_samples_leaf': 5}
+
+train score:1068.15834895	test score:1249.6685466	rank:15
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 1, 'max_depth': 25, 'min_samples_leaf': 7}
+
+train score:1059.10271757	test score:1250.11007514	rank:16
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 18, 'max_depth': 22, 'min_samples_leaf': 5}
+
+train score:1071.50722272	test score:1250.48179812	rank:17
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 34, 'max_depth': 27, 'min_samples_leaf': 4}
+
+train score:1096.97072194	test score:1251.00581677	rank:18
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 5, 'max_depth': 32, 'min_samples_leaf': 8}
+
+train score:1064.64852677	test score:1251.0697967	rank:19
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 5, 'max_depth': 25, 'min_samples_leaf': 8}
+
+train score:1079.13295807	test score:1251.479822	rank:20
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 3, 'max_depth': 32, 'min_samples_leaf': 9}
+
+train score:1083.94974435	test score:1252.38140502	rank:21
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 12, 'max_depth': 31, 'min_samples_leaf': 9}
+
+train score:1084.66517471	test score:1252.47244599	rank:22
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 35, 'max_depth': 22, 'min_samples_leaf': 2}
+
+train score:1106.61946031	test score:1252.91684476	rank:23
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 4, 'max_depth': 26, 'min_samples_leaf': 9}
+
+train score:1093.21550888	test score:1252.92780787	rank:24
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 37, 'max_depth': 33, 'min_samples_leaf': 6}
+
+train score:1114.27605204	test score:1253.13581083	rank:25
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 31, 'max_depth': 23, 'min_samples_leaf': 5}
+
+train score:1111.58746186	test score:1253.13816451	rank:26
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 37, 'max_depth': 27, 'min_samples_leaf': 6}
+
+train score:1120.30209966	test score:1253.20962071	rank:27
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 30, 'max_depth': 27, 'min_samples_leaf': 7}
+
+train score:1108.60480688	test score:1253.25491565	rank:28
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 32, 'max_depth': 23, 'min_samples_leaf': 5}
+
+train score:1114.98017089	test score:1253.46773878	rank:29
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 21, 'max_depth': 20, 'min_samples_leaf': 4}
+
+train score:1097.0640622	test score:1253.90290417	rank:30
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 48, 'max_depth': 25, 'min_samples_leaf': 2}
+
+train score:1121.93394159	test score:1254.06626683	rank:31
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 5, 'max_depth': 29, 'min_samples_leaf': 10}
+
+train score:1102.67875778	test score:1254.20029163	rank:32
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 46, 'max_depth': 33, 'min_samples_leaf': 5}
+
+train score:1128.28362125	test score:1254.485639	rank:33
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 2, 'max_depth': 27, 'min_samples_leaf': 10}
+
+train score:1105.87672471	test score:1254.63413345	rank:34
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 31, 'max_depth': 31, 'min_samples_leaf': 9}
+
+train score:1120.18619199	test score:1254.96920785	rank:35
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 13, 'max_depth': 21, 'min_samples_leaf': 8}
+
+train score:1104.42644506	test score:1255.27957528	rank:36
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 32, 'max_depth': 22, 'min_samples_leaf': 6}
+
+train score:1126.85599501	test score:1255.61939735	rank:37
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 45, 'max_depth': 23, 'min_samples_leaf': 5}
+
+train score:1143.86842908	test score:1256.98084938	rank:38
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 20, 'max_depth': 22, 'min_samples_leaf': 10}
+
+train score:1124.12163285	test score:1257.08137318	rank:39
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 18, 'max_depth': 31, 'min_samples_leaf': 12}
+
+train score:1126.13236731	test score:1257.19448994	rank:40
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 28, 'max_depth': 26, 'min_samples_leaf': 11}
+
+train score:1131.34238159	test score:1257.21508427	rank:41
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 21, 'max_depth': 21, 'min_samples_leaf': 9}
+
+train score:1124.39243745	test score:1257.24189389	rank:42
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 19, 'max_depth': 34, 'min_samples_leaf': 12}
+
+train score:1125.54083199	test score:1257.47707272	rank:43
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 28, 'max_depth': 28, 'min_samples_leaf': 13}
+
+train score:1141.29838371	test score:1259.39156097	rank:44
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 7, 'max_depth': 27, 'min_samples_leaf': 13}
+
+train score:1140.15970298	test score:1259.40114689	rank:45
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 38, 'max_depth': 32, 'min_samples_leaf': 12}
+
+train score:1150.15439348	test score:1259.72933566	rank:46
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 27, 'max_depth': 28, 'min_samples_leaf': 14}
+
+train score:1147.9246824	test score:1260.68581732	rank:47
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 20, 'max_depth': 27, 'min_samples_leaf': 14}
+
+train score:1148.73307563	test score:1260.84498034	rank:48
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 28, 'max_depth': 21, 'min_samples_leaf': 11}
+
+train score:1150.22704623	test score:1261.10081311	rank:49
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 39, 'max_depth': 29, 'min_samples_leaf': 13}
+
+train score:1157.53958025	test score:1261.25573952	rank:50
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 48, 'max_depth': 23, 'min_samples_leaf': 9}
+
+train score:1165.83277558	test score:1261.51661377	rank:51
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 11, 'max_depth': 25, 'min_samples_leaf': 14}
+
+train score:1152.44708853	test score:1261.68549861	rank:52
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 33, 'max_depth': 31, 'min_samples_leaf': 15}
+
+train score:1156.91802544	test score:1261.86269517	rank:53
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 38, 'max_depth': 23, 'min_samples_leaf': 12}
+
+train score:1162.07439407	test score:1261.93105148	rank:54
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 2, 'max_depth': 22, 'min_samples_leaf': 13}
+
+train score:1153.70111902	test score:1261.99015408	rank:55
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 49, 'max_depth': 27, 'min_samples_leaf': 12}
+
+train score:1169.38424115	test score:1262.43269125	rank:56
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 19, 'max_depth': 33, 'min_samples_leaf': 16}
+
+train score:1161.07277788	test score:1262.99370845	rank:57
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 11, 'max_depth': 23, 'min_samples_leaf': 15}
+
+train score:1164.53844727	test score:1263.4318357	rank:58
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 47, 'max_depth': 20, 'min_samples_leaf': 8}
+
+train score:1173.94166672	test score:1263.80097827	rank:59
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 2, 'max_depth': 21, 'min_samples_leaf': 14}
+
+train score:1164.92509734	test score:1263.84137891	rank:60
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 24, 'max_depth': 24, 'min_samples_leaf': 16}
+
+train score:1168.46620863	test score:1264.22567573	rank:61
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 29, 'max_depth': 24, 'min_samples_leaf': 17}
+
+train score:1174.52776084	test score:1265.65705758	rank:62
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 45, 'max_depth': 32, 'min_samples_leaf': 17}
+
+train score:1178.42195331	test score:1265.69140187	rank:63
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 16, 'max_depth': 30, 'min_samples_leaf': 18}
+
+train score:1174.76659312	test score:1266.01605962	rank:64
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 37, 'max_depth': 22, 'min_samples_leaf': 16}
+
+train score:1178.0153083	test score:1266.03079169	rank:65
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 38, 'max_depth': 34, 'min_samples_leaf': 18}
+
+train score:1175.01378886	test score:1266.03621585	rank:66
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 16, 'max_depth': 30, 'min_samples_leaf': 19}
+
+train score:1180.13695656	test score:1266.9930473	rank:67
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 13, 'max_depth': 28, 'min_samples_leaf': 19}
+
+train score:1180.75448293	test score:1267.19018965	rank:68
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 13, 'max_depth': 32, 'min_samples_leaf': 19}
+
+train score:1180.02651428	test score:1267.27116317	rank:69
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 13, 'max_depth': 30, 'min_samples_leaf': 19}
+
+train score:1180.3113299	test score:1267.27850961	rank:70
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 47, 'max_depth': 31, 'min_samples_leaf': 18}
+
+train score:1184.11394681	test score:1267.44501548	rank:71
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 28, 'max_depth': 25, 'min_samples_leaf': 19}
+
+train score:1183.72257855	test score:1267.70163266	rank:72
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 34, 'max_depth': 33, 'min_samples_leaf': 20}
+
+train score:1184.77128524	test score:1268.15649444	rank:73
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 17, 'max_depth': 31, 'min_samples_leaf': 20}
+
+train score:1185.28151117	test score:1268.1727911	rank:74
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 29, 'max_depth': 26, 'min_samples_leaf': 20}
+
+train score:1187.54480357	test score:1268.43125489	rank:75
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 38, 'max_depth': 22, 'min_samples_leaf': 19}
+
+train score:1189.96754098	test score:1269.16285922	rank:76
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 49, 'max_depth': 21, 'min_samples_leaf': 18}
+
+train score:1198.15008822	test score:1270.6491844	rank:77
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 44, 'max_depth': 22, 'min_samples_leaf': 20}
+
+train score:1196.51463107	test score:1270.69803259	rank:78
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 13, 'max_depth': 21, 'min_samples_leaf': 20}
+
+train score:1197.0604471	test score:1270.99048533	rank:79
+
+------------------------------
+parameters: {'max_features': 'sqrt', 'min_samples_split': 42, 'max_depth': 20, 'min_samples_leaf': 20}
+
+train score:1201.61375255	test score:1272.38696358	rank:80
+
+------------------------------
+
+

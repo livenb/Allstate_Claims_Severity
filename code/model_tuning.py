@@ -1,11 +1,12 @@
 import pandas as pd
 import numpy as np
-from scipy import stats 
+from scipy import stats
 from sklearn.model_selection import GridSearchCV, RandomizedSearchCV
 from sklearn.model_selection import KFold, train_test_split
 from sklearn.ensemble import RandomForestRegressor, BaggingRegressor
 from sklearn.metrics import make_scorer, mean_absolute_error
 import matplotlib.pyplot as plt
+from xgboost import XGBRegressor
 import xgboost as xgb
 import tqdm
 import time
@@ -63,7 +64,7 @@ def run_cv_rf(X, y, fold_num=10, **kwargs):
 def write_log(filename, report):
     idx = np.argsort(report['mean_test_score'])[::-1]
     with open(filename, 'a+') as f:
-        f.write('\n'+'*'*30+'\n')
+        f.write('\n'+'*'*70+'\n')
         f.write(time.strftime("%Y/%m/%d - %H:%M:%S"))
         f.write('\n' + '-'*30 + '\n')
         for i in idx:
@@ -77,10 +78,10 @@ def write_log(filename, report):
 
 
 def rf_params_search(X, y):
-    params = {'max_features': ['sqrt', 'log2'],
-              'max_depth': stats.randint(5, 35),
+    params = {'max_features': ['sqrt'],
+              'max_depth': stats.randint(20, 35),
               'min_samples_split': stats.randint(1, 51),
-              'min_samples_leaf': stats.randint(1, 51)}
+              'min_samples_leaf': stats.randint(1, 21)}
     rfrgs = RandomForestRegressor(n_estimators=500,
                                   criterion='mse', oob_score=True)
     n_iter_search = 80
@@ -108,27 +109,53 @@ def one_run_xgboost(X, y):
     bst = xgb.train(params, xgdmat, num_boost_round=num_rounds)
 
 
+def xgb_params_search(X, y):
+    params = {'learning_rate': stats.uniform(0, 1),
+              'gamma': stats.uniform(0, 11),
+              'max_depth': stats.randint(1, 31),
+              'min_child_weight': stats.randint(1, 31),
+              'subsample': stats.uniform(0.5, 1),
+              'colsample_bytree': stats.uniform(0, 1),
+              'colsample_bylevel': stats.uniform(0, 1),
+              }
+    xgb_rgs = XGBRegressor(n_estimators=500, objective='reg:linear')
+    n_iter_search = 80
+    random_search = RandomizedSearchCV(xgb_rgs, param_distributions=params,
+                                       n_iter=n_iter_search,
+                                       cv=5, n_jobs=-1, verbose=1,
+                                       scoring=make_scorer(MAE)
+                                       )
+    random_search.fit(X, y)
+    print 'finish training'
+    report = random_search.cv_results_
+    write_log('../log/xgboost_params.log', report)
+    train_errors = report['mean_train_score']
+    test_errors = report['mean_test_score']
+    plot_errors(train_errors, test_errors)
+    return random_search
+
+
 def plot_errors(train_errors, test_erros):
     idx = np.argsort(train_errors)
     plt.figure()
     plt.title('Mean Abosulte Error')
     plt.plot(-train_errors[idx], label='train')
     plt.plot(-test_erros[idx], label='test')
-    plt.legend()
+    plt.legend(loc='best')
 
 
-def plot_feature_importance(fea_imp, features, fold_num=None, filename=None):
-    if fold_num:
-        k = fold_num
+def plot_feature_importance(fea_imp, features, fea_num=None, filename=None):
+    if fea_num:
+        k = fea_num
     else:
         k = len(fea_imp)
     idx = fea_imp.argsort()[::-1]
     plt.figure()
     plt.title('Feature Importance')
-    plt.bar(range(k), fea_imp[idx][:k], align="center")
+    plt.bar(range(k), fea_imp[idx][:k], align="center", alpha=0.8)
     plt.xticks(range(k), features[idx][:k], rotation=60)
     if filename:
-        plt.savefig('../img/fea_imp_simple.png', dpi=300)
+        plt.savefig('../img/fea_imp.png', dpi=300)
 
 
 def run_grid_search(X, y):
@@ -138,8 +165,9 @@ if __name__ == '__main__':
     data_path = '../data/'
     file_train = 'train_new.csv'
     X, y, features = read_data(data_path+file_train)
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
+    # X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
     # fea_imp = run_cv_rf(X_train, y_train)
-    # plot_feature_importance(fea_imp, features)
-    random_search = rf_params_search(X_train, y_train)
-    plt.show()
+    random_search = xgb_params_search(X, y)
+    fea_imp = random_search.best_estimator_.feature_importances_
+    plot_feature_importance(fea_imp, features)
+    # plt.show()

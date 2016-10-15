@@ -102,19 +102,10 @@ def rf_params_search(X, y):
     return random_search
 
 
-def one_run_xgboost(X, y):
-    xgdmat = xgb.DMatrix(X, y)
-    params = {'eta': 0.01, 'seed': 0, 'subsample': 0.5,
-              'colsample_bytree': 0.5, 'objective': 'reg:linear',
-              'max_depth': 6, 'min_child_weight': 3}
-    num_rounds = 1000
-    bst = xgb.train(params, xgdmat, num_boost_round=num_rounds)
-
-
 def xgb_params_search(X, y):
-    params = {'learning_rate': stats.uniform(0, 1),
+    params = {'learning_rate': np.arange(0.005, 0.3, 0.005),
               'gamma': stats.uniform(0, 11),
-              'max_depth': stats.randint(1, 31),
+              'max_depth': stats.randint(3, 21),
               'min_child_weight': stats.randint(1, 31),
               'subsample': np.arange(0.5, 1.0, 0.05),
               'colsample_bytree': np.arange(0.5, 1.0, 0.05),

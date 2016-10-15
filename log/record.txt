@@ -39,4 +39,23 @@ bagging = BaggingRegressor(rfr, n_estimators=10, verbose=1)
 PB: 1218.87643
 
 **********************************************
+params = {'eta': 0.014, 'subsample': 0.95,
+          'colsample_bylevel': 0.55, 'gamma': 6.45,
+          'colsample_bytree': 0.75, 'objective': 'reg:linear',
+          'max_depth': 13, 'min_child_weight': 23}
+num_rounds = 1000
+----------------------------------------------
+PB: 1156.10973
+
+**********************************************
+params = {'eta': 0.0117, 'subsample': 0.7,
+          'colsample_bylevel': 0.95, 'gamma': 3.75,
+          'colsample_bytree': 0.85, 'objective': 'reg:linear',
+          'max_depth': 13, 'min_child_weight': 26}
+num_rounds = 1000
+----------------------------------------------
+1158.29642
+
+**********************************************
+
 ----------------------------------------------

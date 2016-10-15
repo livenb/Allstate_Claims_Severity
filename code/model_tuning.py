@@ -112,7 +112,7 @@ def xgb_params_search(X, y):
               'colsample_bylevel': np.arange(0.5, 1.0, 0.05),
               }
     xgb_rgs = XGBRegressor(n_estimators=500, objective='reg:linear', nthread=4)
-    n_iter_search = 40
+    n_iter_search = 120
     random_search = RandomizedSearchCV(xgb_rgs, param_distributions=params,
                                        n_iter=n_iter_search,
                                        cv=5, n_jobs=4, verbose=1,
@@ -135,7 +135,7 @@ def plot_errors(train_errors, test_erros):
     plt.plot(-train_errors[idx], label='train')
     plt.plot(-test_erros[idx], label='test')
     plt.legend(loc='best')
-    plt.savefig('../img/erros.png', dpi=300)
+    plt.savefig('../img/erros_1.png', dpi=300)
 
 
 def plot_feature_importance(fea_imp, features, fea_num=None, filename=None):
@@ -162,6 +162,6 @@ if __name__ == '__main__':
     # X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
     # fea_imp = run_cv_rf(X_train, y_train)
     random_search = xgb_params_search(X, y)
-    fea_imp = random_search.best_estimator_.feature_importances_
-    plot_feature_importance(fea_imp, features, 30, True)
+    # fea_imp = random_search.best_estimator_.feature_importances_
+    # plot_feature_importance(fea_imp, features, 30, True)
     # plt.show()

@@ -79,6 +79,30 @@ def write_log(filename, report):
             f.write('\n' + '-'*30 + '\n')
 
 
+def plot_errors(train_errors, test_erros):
+    idx = np.argsort(train_errors)
+    plt.figure()
+    plt.title('Mean Abosulte Error')
+    plt.plot(-train_errors[idx], label='train')
+    plt.plot(-test_erros[idx], label='test')
+    plt.legend(loc='best')
+    plt.savefig('../img/erros_1.png', dpi=300)
+
+
+def plot_feature_importance(fea_imp, features, fea_num=None, filename=None):
+    if fea_num:
+        k = fea_num
+    else:
+        k = len(fea_imp)
+    idx = fea_imp.argsort()[::-1]
+    plt.figure()
+    plt.title('Feature Importance')
+    plt.bar(range(k), fea_imp[idx][:k], align="center", alpha=0.8)
+    plt.xticks(range(k), features[idx][:k], rotation=60)
+    if filename:
+        plt.savefig('../img/fea_imp.png', dpi=300)
+
+
 def rf_params_search(X, y):
     params = {'max_features': ['sqrt'],
               'max_depth': stats.randint(20, 35),
@@ -128,40 +152,38 @@ def xgb_params_search(X, y):
     return random_search
 
 
-def plot_errors(train_errors, test_erros):
-    idx = np.argsort(train_errors)
-    plt.figure()
-    plt.title('Mean Abosulte Error')
-    plt.plot(-train_errors[idx], label='train')
-    plt.plot(-test_erros[idx], label='test')
-    plt.legend(loc='best')
-    plt.savefig('../img/erros_1.png', dpi=300)
-
-
-def plot_feature_importance(fea_imp, features, fea_num=None, filename=None):
-    if fea_num:
-        k = fea_num
-    else:
-        k = len(fea_imp)
-    idx = fea_imp.argsort()[::-1]
-    plt.figure()
-    plt.title('Feature Importance')
-    plt.bar(range(k), fea_imp[idx][:k], align="center", alpha=0.8)
-    plt.xticks(range(k), features[idx][:k], rotation=60)
-    if filename:
-        plt.savefig('../img/fea_imp.png', dpi=300)
-
-
 def run_grid_search(X, y):
-    pass
+    params = {'learning_rate': 0.1,
+              'gamma': 1,
+              'max_depth': np.arange(3, 23, 3),
+              'min_child_weight': np.arange(5, 55, 5),
+              'subsample': 0.7,
+              'colsample_bytree': 0.8,
+              'colsample_bylevel': 0.85,
+              }
+    xgb_rgs = XGBRegressor(n_estimators=500, objective='reg:linear', nthread=4)
+    grid_search = GridSearchCV(xgb_rgs, param_distributions=params,
+                               cv=5, n_jobs=4, verbose=1,
+                               scoring=make_scorer(MAE)
+                               )
+    grid_search.fit(X, y)
+    print 'finish training'
+    report = grid_search.cv_results_
+    write_log('../log/xgboost_params.log', report)
+    train_errors = report['mean_train_score']
+    test_errors = report['mean_test_score']
+    plot_errors(train_errors, test_errors)
+    return grid_search
+
 
 if __name__ == '__main__':
     data_path = '../data/'
     file_train = 'train_new.csv'
     X, y, features = read_data(data_path+file_train)
     # X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
+    run_grid_search(X, y)
     # fea_imp = run_cv_rf(X_train, y_train)
-    random_search = xgb_params_search(X, y)
+    # random_search = xgb_params_search(X, y)
     # fea_imp = random_search.best_estimator_.feature_importances_
     # plot_feature_importance(fea_imp, features, 30, True)
     # plt.show()

@@ -88,7 +88,7 @@ def plot_errors(train_errors, test_erros, save=False):
     plt.legend(loc='best')
     if save:
         time_now = time.strftime("%Y%m%d_%H%M%S")
-        name = '../img/erros_{}}.png'.format(time_now)
+        name = '../img/erros_{}.png'.format(time_now)
         plt.savefig(name, dpi=300)
 
 
@@ -151,15 +151,15 @@ def xgb_params_search(X, y):
     write_log('../log/xgboost_params.log', report)
     train_errors = report['mean_train_score']
     test_errors = report['mean_test_score']
-    plot_errors(train_errors, test_errors)
+    plot_errors(train_errors, test_errors, True)
     return random_search
 
 
 def run_grid_search(X, y):
     params = {'learning_rate': [0.1],
-              'gamma': [1],
-              'max_depth': np.arange(6, 11, 1),
-              'min_child_weight': np.arange(1, 11, 1),
+              'gamma': [0, 0.05, 0.1, 0.5, 1, 1.5, 3, 5, 7, 10],
+              'max_depth': [6],
+              'min_child_weight': [1],
               'subsample': [0.7],
               'colsample_bytree': [0.8],
               'colsample_bylevel': [0.85],
@@ -175,7 +175,7 @@ def run_grid_search(X, y):
     write_log('../log/xgboost_params.log', report)
     train_errors = report['mean_train_score']
     test_errors = report['mean_test_score']
-    plot_errors(train_errors, test_errors)
+    plot_errors(train_errors, test_errors, True)
     return grid_search
 
 

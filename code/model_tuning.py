@@ -160,9 +160,9 @@ def run_grid_search(X, y):
               'gamma': [0],
               'max_depth': [6],
               'min_child_weight': [1],
-              'subsample': [0.5, 0.6, 0.7, 0.8, 0.9, 1],
-              'colsample_bytree': [0.8],
-              'colsample_bylevel': [0.85],
+              'subsample': [1],
+              'colsample_bytree': [0.5, 0.6, 0.7, 0.8, 0.9, 1],
+              'colsample_bylevel': [0.5, 0.6, 0.7, 0.8, 0.9, 1],
               }
     xgb_rgs = XGBRegressor(n_estimators=500, objective='reg:linear', nthread=4)
     grid_search = GridSearchCV(xgb_rgs, param_grid=params,

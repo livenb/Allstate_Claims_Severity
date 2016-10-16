@@ -2035,3 +2035,42 @@ parameters: {'colsample_bytree': 0.4, 'colsample_bylevel': 0.6, 'learning_rate':
 train score:1064.56720518	test score:1182.11137092	rank:20
 
 ------------------------------
+
+**********************************************************************
+2016/10/16 - 22:33:19
+------------------------------
+parameters: {'colsample_bytree': 0.5, 'colsample_bylevel': 0.6, 'learning_rate': 0.05, 'min_child_weight': 1, 'subsample': 1, 'max_depth': 6, 'gamma': 0}
+
+train score:1015.96296364	test score:1175.07950199	rank:1
+
+------------------------------
+parameters: {'colsample_bytree': 0.5, 'colsample_bylevel': 0.6, 'learning_rate': 0.075, 'min_child_weight': 1, 'subsample': 1, 'max_depth': 6, 'gamma': 0}
+
+train score:965.673423301	test score:1178.95874528	rank:2
+
+------------------------------
+parameters: {'colsample_bytree': 0.5, 'colsample_bylevel': 0.6, 'learning_rate': 0.1, 'min_child_weight': 1, 'subsample': 1, 'max_depth': 6, 'gamma': 0}
+
+train score:923.277296207	test score:1183.50681211	rank:3
+
+------------------------------
+parameters: {'colsample_bytree': 0.5, 'colsample_bylevel': 0.6, 'learning_rate': 0.01, 'min_child_weight': 1, 'subsample': 1, 'max_depth': 6, 'gamma': 0}
+
+train score:1131.06687354	test score:1184.07229611	rank:4
+
+------------------------------
+parameters: {'colsample_bytree': 0.5, 'colsample_bylevel': 0.6, 'learning_rate': 0.2, 'min_child_weight': 1, 'subsample': 1, 'max_depth': 6, 'gamma': 0}
+
+train score:790.493868746	test score:1216.7907318	rank:5
+
+------------------------------
+parameters: {'colsample_bytree': 0.5, 'colsample_bylevel': 0.6, 'learning_rate': 0.3, 'min_child_weight': 1, 'subsample': 1, 'max_depth': 6, 'gamma': 0}
+
+train score:700.603967713	test score:1252.96904685	rank:6
+
+------------------------------
+parameters: {'colsample_bytree': 0.5, 'colsample_bylevel': 0.6, 'learning_rate': 0.001, 'min_child_weight': 1, 'subsample': 1, 'max_depth': 6, 'gamma': 0}
+
+train score:1312.34081091	test score:1319.74477301	rank:7
+
+------------------------------

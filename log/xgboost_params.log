@@ -1931,3 +1931,107 @@ parameters: {'colsample_bytree': 1, 'colsample_bylevel': 1, 'learning_rate': 0.1
 train score:1044.1986178	test score:1182.44862189	rank:36
 
 ------------------------------
+
+**********************************************************************
+2016/10/16 - 21:51:26
+------------------------------
+parameters: {'colsample_bytree': 0.5, 'colsample_bylevel': 0.6, 'learning_rate': 0.1, 'min_child_weight': 1, 'subsample': 1, 'max_depth': 6, 'gamma': 0}
+
+train score:1058.20581892	test score:1178.51754292	rank:1
+
+------------------------------
+parameters: {'colsample_bytree': 0.5, 'colsample_bylevel': 0.7, 'learning_rate': 0.1, 'min_child_weight': 1, 'subsample': 1, 'max_depth': 6, 'gamma': 0}
+
+train score:1056.18017519	test score:1179.15071076	rank:2
+
+------------------------------
+parameters: {'colsample_bytree': 0.5, 'colsample_bylevel': 0.55, 'learning_rate': 0.1, 'min_child_weight': 1, 'subsample': 1, 'max_depth': 6, 'gamma': 0}
+
+train score:1059.67213271	test score:1179.1696789	rank:3
+
+------------------------------
+parameters: {'colsample_bytree': 0.5, 'colsample_bylevel': 0.65, 'learning_rate': 0.1, 'min_child_weight': 1, 'subsample': 1, 'max_depth': 6, 'gamma': 0}
+
+train score:1057.88992154	test score:1179.34772676	rank:4
+
+------------------------------
+parameters: {'colsample_bytree': 0.55, 'colsample_bylevel': 0.55, 'learning_rate': 0.1, 'min_child_weight': 1, 'subsample': 1, 'max_depth': 6, 'gamma': 0}
+
+train score:1058.62061139	test score:1179.43308058	rank:5
+
+------------------------------
+parameters: {'colsample_bytree': 0.55, 'colsample_bylevel': 0.7, 'learning_rate': 0.1, 'min_child_weight': 1, 'subsample': 1, 'max_depth': 6, 'gamma': 0}
+
+train score:1056.80922292	test score:1179.76306155	rank:6
+
+------------------------------
+parameters: {'colsample_bytree': 0.45, 'colsample_bylevel': 0.5, 'learning_rate': 0.1, 'min_child_weight': 1, 'subsample': 1, 'max_depth': 6, 'gamma': 0}
+
+train score:1063.52946111	test score:1179.78729027	rank:7
+
+------------------------------
+parameters: {'colsample_bytree': 0.45, 'colsample_bylevel': 0.55, 'learning_rate': 0.1, 'min_child_weight': 1, 'subsample': 1, 'max_depth': 6, 'gamma': 0}
+
+train score:1061.76283252	test score:1179.81848574	rank:8
+
+------------------------------
+parameters: {'colsample_bytree': 0.45, 'colsample_bylevel': 0.7, 'learning_rate': 0.1, 'min_child_weight': 1, 'subsample': 1, 'max_depth': 6, 'gamma': 0}
+
+train score:1059.12507093	test score:1180.05897925	rank:9
+
+------------------------------
+parameters: {'colsample_bytree': 0.5, 'colsample_bylevel': 0.5, 'learning_rate': 0.1, 'min_child_weight': 1, 'subsample': 1, 'max_depth': 6, 'gamma': 0}
+
+train score:1061.88674339	test score:1180.11486249	rank:10
+
+------------------------------
+parameters: {'colsample_bytree': 0.55, 'colsample_bylevel': 0.65, 'learning_rate': 0.1, 'min_child_weight': 1, 'subsample': 1, 'max_depth': 6, 'gamma': 0}
+
+train score:1056.21861523	test score:1180.293766	rank:11
+
+------------------------------
+parameters: {'colsample_bytree': 0.55, 'colsample_bylevel': 0.5, 'learning_rate': 0.1, 'min_child_weight': 1, 'subsample': 1, 'max_depth': 6, 'gamma': 0}
+
+train score:1060.48297841	test score:1180.3669231	rank:12
+
+------------------------------
+parameters: {'colsample_bytree': 0.45, 'colsample_bylevel': 0.6, 'learning_rate': 0.1, 'min_child_weight': 1, 'subsample': 1, 'max_depth': 6, 'gamma': 0}
+
+train score:1060.9468443	test score:1180.3709758	rank:13
+
+------------------------------
+parameters: {'colsample_bytree': 0.55, 'colsample_bylevel': 0.6, 'learning_rate': 0.1, 'min_child_weight': 1, 'subsample': 1, 'max_depth': 6, 'gamma': 0}
+
+train score:1057.68679514	test score:1180.46192339	rank:14
+
+------------------------------
+parameters: {'colsample_bytree': 0.45, 'colsample_bylevel': 0.65, 'learning_rate': 0.1, 'min_child_weight': 1, 'subsample': 1, 'max_depth': 6, 'gamma': 0}
+
+train score:1059.65144718	test score:1180.77979462	rank:15
+
+------------------------------
+parameters: {'colsample_bytree': 0.4, 'colsample_bylevel': 0.55, 'learning_rate': 0.1, 'min_child_weight': 1, 'subsample': 1, 'max_depth': 6, 'gamma': 0}
+
+train score:1065.0940842	test score:1180.94465175	rank:16
+
+------------------------------
+parameters: {'colsample_bytree': 0.4, 'colsample_bylevel': 0.5, 'learning_rate': 0.1, 'min_child_weight': 1, 'subsample': 1, 'max_depth': 6, 'gamma': 0}
+
+train score:1066.3965079	test score:1181.06654753	rank:17
+
+------------------------------
+parameters: {'colsample_bytree': 0.4, 'colsample_bylevel': 0.7, 'learning_rate': 0.1, 'min_child_weight': 1, 'subsample': 1, 'max_depth': 6, 'gamma': 0}
+
+train score:1062.09226639	test score:1181.56386948	rank:18
+
+------------------------------
+parameters: {'colsample_bytree': 0.4, 'colsample_bylevel': 0.65, 'learning_rate': 0.1, 'min_child_weight': 1, 'subsample': 1, 'max_depth': 6, 'gamma': 0}
+
+train score:1062.87849293	test score:1181.57624642	rank:19
+
+------------------------------
+parameters: {'colsample_bytree': 0.4, 'colsample_bylevel': 0.6, 'learning_rate': 0.1, 'min_child_weight': 1, 'subsample': 1, 'max_depth': 6, 'gamma': 0}
+
+train score:1064.56720518	test score:1182.11137092	rank:20
+
+------------------------------

@@ -65,6 +65,34 @@ params = {'colsample_bytree': 0.8, 'colsample_bylevel': 0.85,
 Bagging : 1153.84277
 
 **********************************************
+params = {'colsample_bytree': 0.8, 'colsample_bylevel': 0.85,
+          'learning_rate': 0.1, 'min_child_weight': 1,
+          'subsample': 0.7, 'max_depth': 6, 'gamma': 1}
+xgb_rgs = XGBRegressor(n_estimators=1000, nthread=4, **params)
+----------------------------------------------
+1154.47780
+
+**********************************************
+params = {'colsample_bytree': 0.8, 'colsample_bylevel': 0.85,
+          'learning_rate': 0.1, 'min_child_weight': 7,
+          'subsample': 0.7, 'max_depth': 6, 'gamma': 1}
+xgb_rgs = XGBRegressor(n_estimators=1000, nthread=4, **params)
+----------------------------------------------
+1155.68880
+
+**********************************************
+params = {'colsample_bytree': 0.5, 'colsample_bylevel': 0.6,
+             'learning_rate': 0.1, 'min_child_weight': 6,
+             'subsample': 1, 'max_depth': 6, 'gamma': 0}
+   xgb_rgs = XGBRegressor(n_estimators=1000, nthread=4, **params)
+----------------------------------------------
+1153.11510
+
+**********************************************
+
+----------------------------------------------
+
+**********************************************
 
 ----------------------------------------------
 

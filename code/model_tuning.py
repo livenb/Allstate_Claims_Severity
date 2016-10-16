@@ -79,14 +79,17 @@ def write_log(filename, report):
             f.write('\n' + '-'*30 + '\n')
 
 
-def plot_errors(train_errors, test_erros):
+def plot_errors(train_errors, test_erros, save=False):
     idx = np.argsort(train_errors)
     plt.figure()
     plt.title('Mean Abosulte Error')
     plt.plot(-train_errors[idx], label='train')
     plt.plot(-test_erros[idx], label='test')
     plt.legend(loc='best')
-    plt.savefig('../img/erros_1.png', dpi=300)
+    if save:
+        time_now = time.strftime("%Y%m%d_%H%M%S")
+        name = '../img/erros_{}}.png'.format(time_now)
+        plt.savefig(name, dpi=300)
 
 
 def plot_feature_importance(fea_imp, features, fea_num=None, filename=None):
@@ -122,7 +125,7 @@ def rf_params_search(X, y):
     write_log('../log/random_forest_params.log', report)
     train_errors = report['mean_train_score']
     test_errors = report['mean_test_score']
-    plot_errors(train_errors, test_errors)
+    plot_errors(train_errors, test_errors, True)
     return random_search
 
 
@@ -155,8 +158,8 @@ def xgb_params_search(X, y):
 def run_grid_search(X, y):
     params = {'learning_rate': [0.1],
               'gamma': [1],
-              'max_depth': np.arange(3, 23, 3),
-              'min_child_weight': np.arange(1, 50, 3),
+              'max_depth': np.arange(6, 11, 1),
+              'min_child_weight': np.arange(1, 11, 1),
               'subsample': [0.7],
               'colsample_bytree': [0.8],
               'colsample_bylevel': [0.85],

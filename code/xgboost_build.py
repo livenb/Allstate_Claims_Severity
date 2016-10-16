@@ -38,8 +38,8 @@ def one_run_xgboost(X, y):
 
 def bagging_xgboost(X, y, X_test):
     params = {'colsample_bytree': 0.8, 'colsample_bylevel': 0.85,
-              'learning_rate': 0.025, 'min_child_weight': 29,
-              'subsample': 0.95, 'max_depth': 12, 'gamma': 0.079}
+              'learning_rate': 0.1, 'min_child_weight': 7,
+              'subsample': 0.7, 'max_depth': 6, 'gamma': 1}
     xgb_rgs = XGBRegressor(n_estimators=1000, nthread=4, **params)
     bagging = BaggingRegressor(xgb_rgs, n_estimators=10, n_jobs=2, verbose=2)
     bagging.fit(X, y)

@@ -153,16 +153,16 @@ def xgb_params_search(X, y):
 
 
 def run_grid_search(X, y):
-    params = {'learning_rate': 0.1,
-              'gamma': 1,
+    params = {'learning_rate': [0.1],
+              'gamma': [1],
               'max_depth': np.arange(3, 23, 3),
-              'min_child_weight': np.arange(5, 55, 5),
-              'subsample': 0.7,
-              'colsample_bytree': 0.8,
-              'colsample_bylevel': 0.85,
+              'min_child_weight': np.arange(1, 50, 3),
+              'subsample': [0.7],
+              'colsample_bytree': [0.8],
+              'colsample_bylevel': [0.85],
               }
     xgb_rgs = XGBRegressor(n_estimators=500, objective='reg:linear', nthread=4)
-    grid_search = GridSearchCV(xgb_rgs, param_distributions=params,
+    grid_search = GridSearchCV(xgb_rgs, param_grid=params,
                                cv=5, n_jobs=4, verbose=1,
                                scoring=make_scorer(MAE)
                                )

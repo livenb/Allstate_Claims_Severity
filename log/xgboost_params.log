@@ -1713,3 +1713,37 @@ parameters: {'colsample_bytree': 0.8, 'colsample_bylevel': 0.85, 'learning_rate'
 train score:1045.35714115	test score:1183.86640959	rank:1
 
 ------------------------------
+
+**********************************************************************
+2016/10/16 - 18:49:24
+------------------------------
+parameters: {'colsample_bytree': 0.8, 'colsample_bylevel': 0.85, 'learning_rate': 0.1, 'min_child_weight': 1, 'subsample': 1, 'max_depth': 6, 'gamma': 0}
+
+train score:1048.40927074	test score:1181.34370546	rank:1
+
+------------------------------
+parameters: {'colsample_bytree': 0.8, 'colsample_bylevel': 0.85, 'learning_rate': 0.1, 'min_child_weight': 1, 'subsample': 0.9, 'max_depth': 6, 'gamma': 0}
+
+train score:1042.67106367	test score:1181.35410064	rank:2
+
+------------------------------
+parameters: {'colsample_bytree': 0.8, 'colsample_bylevel': 0.85, 'learning_rate': 0.1, 'min_child_weight': 1, 'subsample': 0.8, 'max_depth': 6, 'gamma': 0}
+
+train score:1042.78945923	test score:1183.58146663	rank:3
+
+------------------------------
+parameters: {'colsample_bytree': 0.8, 'colsample_bylevel': 0.85, 'learning_rate': 0.1, 'min_child_weight': 1, 'subsample': 0.7, 'max_depth': 6, 'gamma': 0}
+
+train score:1045.35714115	test score:1183.86640959	rank:4
+
+------------------------------
+parameters: {'colsample_bytree': 0.8, 'colsample_bylevel': 0.85, 'learning_rate': 0.1, 'min_child_weight': 1, 'subsample': 0.6, 'max_depth': 6, 'gamma': 0}
+
+train score:1050.83595492	test score:1187.39712282	rank:5
+
+------------------------------
+parameters: {'colsample_bytree': 0.8, 'colsample_bylevel': 0.85, 'learning_rate': 0.1, 'min_child_weight': 1, 'subsample': 0.5, 'max_depth': 6, 'gamma': 0}
+
+train score:1062.23708968	test score:1190.62494337	rank:6
+
+------------------------------

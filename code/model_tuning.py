@@ -130,16 +130,16 @@ def rf_params_search(X, y):
 
 
 def xgb_params_search(X, y):
-    params = {'learning_rate': np.arange(0.005, 0.3, 0.005),
+    params = {'learning_rate': [0.1],
               'gamma': stats.uniform(0, 11),
               'max_depth': stats.randint(3, 21),
               'min_child_weight': stats.randint(1, 31),
-              'subsample': np.arange(0.5, 1.0, 0.05),
-              'colsample_bytree': np.arange(0.5, 1.0, 0.05),
-              'colsample_bylevel': np.arange(0.5, 1.0, 0.05),
+              'subsample': [1],
+              'colsample_bytree': [1],
+              'colsample_bylevel': [1],
               }
     xgb_rgs = XGBRegressor(n_estimators=500, objective='reg:linear', nthread=4)
-    n_iter_search = 120
+    n_iter_search = 40
     random_search = RandomizedSearchCV(xgb_rgs, param_distributions=params,
                                        n_iter=n_iter_search,
                                        cv=5, n_jobs=4, verbose=1,
@@ -156,15 +156,15 @@ def xgb_params_search(X, y):
 
 
 def run_grid_search(X, y):
-    params = {'learning_rate': [0.1],
+    params = {'learning_rate': [0.001, 0.01, 0.05, 0.075, 0.1, 0.2, 0.3],
               'gamma': [0],
               'max_depth': [6],
               'min_child_weight': [1],
               'subsample': [1],
-              'colsample_bytree': [0.4, 0.45, 0.5, 0.55],
-              'colsample_bylevel': [0.5, 0.55, 0.6, 0.65, 0.7],
+              'colsample_bytree': [0.5],
+              'colsample_bylevel': [0.6],
               }
-    xgb_rgs = XGBRegressor(n_estimators=500, objective='reg:linear', nthread=4)
+    xgb_rgs = XGBRegressor(n_estimators=1500, objective='reg:linear', nthread=4)
     grid_search = GridSearchCV(xgb_rgs, param_grid=params,
                                cv=5, n_jobs=4, verbose=1,
                                scoring=make_scorer(MAE)
@@ -184,9 +184,9 @@ if __name__ == '__main__':
     file_train = 'train_new.csv'
     X, y, features = read_data(data_path+file_train)
     # X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
-    run_grid_search(X, y)
+    # run_grid_search(X, y)
     # fea_imp = run_cv_rf(X_train, y_train)
-    # random_search = xgb_params_search(X, y)
+    random_search = xgb_params_search(X, y)
     # fea_imp = random_search.best_estimator_.feature_importances_
     # plot_feature_importance(fea_imp, features, 30, True)
     # plt.show()

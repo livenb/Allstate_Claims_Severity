@@ -1,5 +1,6 @@
 import pandas as pd
 import xgboost as xgb
+import numpy as np
 from xgboost import XGBRegressor
 from sklearn.ensemble import BaggingRegressor
 
@@ -37,14 +38,14 @@ def one_run_xgboost(X, y):
 
 
 def bagging_xgboost(X, y, X_test):
-    params = {'colsample_bytree': 0.7, 'colsample_bylevel': 1,
-              'learning_rate': 0.075, 'min_child_weight': 6,
-              'subsample': 0.7, 'max_depth': 6, 'gamma': 0}
-    xgb_rgs = XGBRegressor(n_estimators=1000, nthread=4, **params)
-    bagging = BaggingRegressor(xgb_rgs, n_estimators=10, n_jobs=2, verbose=2)
-    bagging.fit(X, y)
+    params = {'colsample_bytree': 0.5, 'colsample_bylevel': 0.6,
+              'learning_rate': 0.05, 'min_child_weight': 1,
+              'subsample': 1, 'max_depth': 6, 'gamma': 0}
+    xgb_rgs = XGBRegressor(n_estimators=2000, nthread=4, **params)
+    bagging = BaggingRegressor(xgb_rgs, n_estimators=20, n_jobs=2, verbose=2)
+    bagging.fit(X, np.log(y))
     y_pred = bagging.predict(X_test)
-    return bagging, y_pred
+    return bagging, np.exp(y_pred)
 
 
 if __name__ == '__main__':
@@ -57,4 +58,4 @@ if __name__ == '__main__':
     bagging, y_pred = bagging_xgboost(X, y, X_test)
     # bst = one_run_xgboost(X, y)
     # y_pred = bst.predict(X_test)
-    make_submission(y_pred, ids, '../data/rf_res.csv')
+    make_submission(y_pred, ids, '../data/rf_res_1.csv')

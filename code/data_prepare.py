@@ -1,5 +1,6 @@
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
+from scipy.stats import skew, boxcox
 
 
 def read_file(filename):
@@ -22,6 +23,17 @@ def transfer_all_cats(df1, df2):
     return df1, df2
 
 
+def fix_skewness(df1, df2):
+    df = pd.concat((df1, df2))
+    contnames = ['cont{}'.format(i+1) for i in xrange(14)]
+    n_train = df1.shape[0]
+    for cont in contnames:
+        skewness = skew(df[cont])
+        if skewness >= 0.25:
+            df[cont], _ = boxcox(df[cont] + 1)
+    return df[:n_train], df.drop('loss', axis=1)[n_train:]
+
+
 if __name__ == '__main__':
     data_path = '../data/'
     file_train = 'train.csv'
@@ -34,3 +46,8 @@ if __name__ == '__main__':
     print 'saving file'
     train.to_csv(data_path+'train_new.csv', index=False)
     test.to_csv(data_path+'test_new.csv', index=False)
+    print 'fixing skewness'
+    train, test = fix_skewness(train, test)
+    print 'saving file'
+    train.to_csv(data_path+'train_skew.csv', index=False)
+    test.to_csv(data_path+'test_skew.csv', index=False)

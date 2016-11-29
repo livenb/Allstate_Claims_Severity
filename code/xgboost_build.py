@@ -3,9 +3,10 @@ import xgboost as xgb
 import numpy as np
 from xgboost import XGBRegressor
 from sklearn.ensemble import BaggingRegressor
+from sklearn.model_selection import KFold
 
 
-def read_data(filename):
+def read_train(filename):
     df = pd.read_csv(filename)
     X = df.drop(['id', 'loss'], axis=1).values
     y = df['loss'].values
@@ -20,6 +21,12 @@ def read_test(filename):
     return X, ids
 
 
+def load_data(trainfile, testfile):
+    X, y, features = read_train(trainfile)
+    X_test, ids = read_test(testfile)
+    return X, y, X_test, features, ids
+
+
 def make_submission(y_pred, ids, filename):
     df = pd.DataFrame()
     df['id'] = ids
@@ -27,35 +34,52 @@ def make_submission(y_pred, ids, filename):
     df.to_csv(filename, index=False)
 
 
-def one_run_xgboost(X, y):
-    xgdmat = xgb.DMatrix(X, y)
-    params = {'colsample_bytree': 0.8, 'colsample_bylevel': 0.85,
-              'learning_rate': 0.025, 'min_child_weight': 29,
-              'subsample': 0.95, 'max_depth': 12, 'gamma': 0.079}
-    num_rounds = 1000
+def one_run_xgboost(X, y, X_test, params, num_rounds=1000):
+    xgdmat = xgb.DMatrix(X, np.log(y))
+    X_test = xgb.DMatrix(X_test)
     bst = xgb.train(params, xgdmat, num_boost_round=num_rounds)
-    return bst
+    y_pred = bst.predict(X_test)
+    return np.exp(y_pred)
 
 
-def bagging_xgboost(X, y, X_test):
-    params = {'colsample_bytree': 0.5, 'colsample_bylevel': 0.6,
-              'learning_rate': 0.05, 'min_child_weight': 1,
-              'subsample': 1, 'max_depth': 6, 'gamma': 0}
+def bagging_xgboost(X, y, X_test, params):
     xgb_rgs = XGBRegressor(n_estimators=2000, nthread=4, **params)
     bagging = BaggingRegressor(xgb_rgs, n_estimators=20, n_jobs=2, verbose=2)
     bagging.fit(X, np.log(y))
     y_pred = bagging.predict(X_test)
-    return bagging, np.exp(y_pred)
+    return np.exp(y_pred) - 200
+
+
+def avg_xgboost(X, y, X_test, params, n_fold=5, n_trees=20000, n_early=100):
+    params['objective'] = 'reg:linear'
+    kfold = KFold(n_fold)
+    y_pred = np.zeros(X_test.shape[0])
+    X_test = xgb.DMatrix(X_test)
+    for i, (idx_train, idx_eval) in enumerate(kfold.split(X)):
+        X_tr, y_tr = X[idx_train], y[idx_train]
+        X_eval, y_eval = X[idx_eval], y[idx_eval]
+        d_tr = xgb.DMatrix(X_tr, np.log(y_tr))
+        d_ev = xgb.DMatrix(X_eval, np.log(y_eval))
+        watchlist = [(d_ev, 'eval')]
+        bst = xgb.train(params, d_tr, num_boost_round=n_trees,
+                        evals=watchlist, early_stopping_rounds=n_early)
+        y_pred += np.exp(bst.predict(X_test))
+    y_pred /= n_fold
+    return y_pred - 200
 
 
 if __name__ == '__main__':
-    data_path = '../data/'
+    path = '../data/'
     file_train = 'train_new.csv'
     file_test = 'test_new.csv'
-    X, y, features = read_data(data_path+file_train)
-    X_test, ids = read_test(data_path+file_test)
-    # X_test = xgb.DMatrix(X_test)
-    bagging, y_pred = bagging_xgboost(X, y, X_test)
-    # bst = one_run_xgboost(X, y)
-    # y_pred = bst.predict(X_test)
-    make_submission(y_pred, ids, '../data/rf_res_1.csv')
+    skew_train = 'train_skew.csv'
+    skew_test = 'test_skew.csv'
+    # X, y, X_test, features, ids = load_data(path+file_train, path+file_test)
+    X, y, X_test, features, ids = load_data(path+skew_train, path+skew_test)
+    params = {'colsample_bytree': 0.5, 'colsample_bylevel': 0.6,
+              'learning_rate': 0.05, 'min_child_weight': 1,
+              'subsample': 1, 'max_depth': 6, 'gamma': 0}
+    y_pred_b = bagging_xgboost(X, y, X_test, params)
+    make_submission(y_pred_b, ids, '../data/rf_res_1.csv')
+    y_pred_a = avg_xgboost(X, y, X_test, params)
+    make_submission(y_pred_a, ids, '../data/rf_res_2.csv')

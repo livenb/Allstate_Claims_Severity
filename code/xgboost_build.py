@@ -45,12 +45,12 @@ def one_run_xgboost(X, y, X_test, params, num_rounds=1000):
 def bagging_xgboost(X, y, X_test, params):
     xgb_rgs = XGBRegressor(n_estimators=2000, nthread=4, **params)
     bagging = BaggingRegressor(xgb_rgs, n_estimators=20, n_jobs=2, verbose=2)
-    bagging.fit(X, np.log(y))
+    bagging.fit(X, np.log(y + shift))
     y_pred = bagging.predict(X_test)
-    return np.exp(y_pred) - 200
+    return np.exp(y_pred) - shift
 
 
-def avg_xgboost(X, y, X_test, params, n_fold=5, n_trees=20000, n_early=100):
+def avg_xgboost(X, y, X_test, params, n_fold=5, n_trees=20000, n_early=50):
     params['objective'] = 'reg:linear'
     kfold = KFold(n_fold)
     y_pred = np.zeros(X_test.shape[0])
@@ -58,17 +58,18 @@ def avg_xgboost(X, y, X_test, params, n_fold=5, n_trees=20000, n_early=100):
     for i, (idx_train, idx_eval) in enumerate(kfold.split(X)):
         X_tr, y_tr = X[idx_train], y[idx_train]
         X_eval, y_eval = X[idx_eval], y[idx_eval]
-        d_tr = xgb.DMatrix(X_tr, np.log(y_tr))
-        d_ev = xgb.DMatrix(X_eval, np.log(y_eval))
+        d_tr = xgb.DMatrix(X_tr, np.log(y_tr + shift))
+        d_ev = xgb.DMatrix(X_eval, np.log(y_eval + shift))
         watchlist = [(d_ev, 'eval')]
         bst = xgb.train(params, d_tr, num_boost_round=n_trees,
                         evals=watchlist, early_stopping_rounds=n_early)
         y_pred += np.exp(bst.predict(X_test))
     y_pred /= n_fold
-    return y_pred - 200
+    return y_pred - shift
 
 
 if __name__ == '__main__':
+    shift = 200
     path = '../data/'
     file_train = 'train_new.csv'
     file_test = 'test_new.csv'
@@ -83,3 +84,5 @@ if __name__ == '__main__':
     make_submission(y_pred_b, ids, '../data/rf_res_1.csv')
     y_pred_a = avg_xgboost(X, y, X_test, params)
     make_submission(y_pred_a, ids, '../data/rf_res_2.csv')
+    y_pred = (y_pred_a + y_pred_b) / 2
+    make_submission(y_pred, ids, '../data/rf_res_3.csv')
